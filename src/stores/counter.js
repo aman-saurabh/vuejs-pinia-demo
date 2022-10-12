@@ -6,12 +6,16 @@ export const useCounterStore = defineStore('counter', () => {
 
   const oddOrEven = computed(() => count.value % 2 == 0 ? 'Even' : 'Odd')
 
-  function updateCount(type) {
+  const updateCount = (type) => {
     if (type == 'inc')
       count.value++
     else if (type == 'dec')
       count.value--
   }
 
-  return { count, updateCount, oddOrEven }
+  const resetCount = () => {
+    count.value = 0
+  }
+
+  return { count, updateCount, resetCount, oddOrEven }
 })
