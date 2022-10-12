@@ -11,6 +11,8 @@
     <div class="count-type">
       The count is {{oddOrEven}}
     </div>
+    <hr>
+    <input type="number" v-model="count" min="0">
   </div>
 </template>
 
