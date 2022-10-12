@@ -1,9 +1,7 @@
 <template>
   <div class="about">
     <h1>About</h1>
-    <div class="count">
-      {{count}}
-    </div>
+    <Counter />
     <button class="counter-button" @click="resetCount">
       Reset
     </button>
@@ -13,6 +11,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { useCounterStore } from '../stores/counter';
+import Counter from '../components/Counter.vue';
 
 const counterStore = useCounterStore();
 //For state and Getters(i.e. computed properties we need to use 'storeToRefs'  but not for actions)
@@ -21,10 +20,6 @@ const { resetCount } = counterStore;
 </script>
 
 <style scoped>
-.count {
-  font-size: 60px;
-  margin: 20px;
-}
 .counter-button {
   font-size: 40px;
   padding: 5px 10px;
