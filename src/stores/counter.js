@@ -16,7 +16,10 @@ export const useCounterStore = defineStore('counter', () => {
   const resetCount = () => {
     count.value = 0
   }
-
+  /*
+  //Commented these lines since now we are persisting entire store in localstorage
+  //Check out "main.ts" file for details.
+  
   //To get localstorage value to set 'count' state on initialization.
   const persistingCount = localStorage.getItem("count");
   if (persistingCount) {
@@ -30,6 +33,7 @@ export const useCounterStore = defineStore('counter', () => {
     //Here setting {deep: true} doesn't have any advantage but if your state is 
     //deeply nested then you should set it to true.
   )
+  */
 
   // Persisting nested 'dummy' data
   const dummy = ref({
@@ -39,6 +43,10 @@ export const useCounterStore = defineStore('counter', () => {
     }
   })
 
+  /*
+  //Commented these lines since now we are persisting entire store in localstorage
+  //Check out "main.ts" file for details.
+  
   const persistingDummy = localStorage.getItem("dummy");
   if (persistingDummy) {
     dummy.value = JSON.parse(persistingDummy);
@@ -48,7 +56,7 @@ export const useCounterStore = defineStore('counter', () => {
     localStorage.setItem('dummy', JSON.stringify(val));
   }, { deep: true }
   )
-
+  */
   const setDummy = () => {
     dummy.value = {
       ...dummy.value, 'address': { ...dummy.value.address, 'city': dummy.value.address.city == "Patna" ? "Noida" : "Patna" }
