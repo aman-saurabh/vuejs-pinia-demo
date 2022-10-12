@@ -5,6 +5,13 @@
     <button class="counter-button" @click="resetCount">
       Reset
     </button>
+    <hr>
+    <div v-if="dummy.name">
+      <h3>Dummy Data</h3>
+      <p>Name : {{dummy.name}}</p>
+      <p>City: {{dummy.address?.city}}</p>
+    </div>
+    <button @click="setDummy">Set Dummy</button>
   </div>
 </template>
 
@@ -15,8 +22,8 @@ import Counter from '../components/Counter.vue';
 
 const counterStore = useCounterStore();
 //For state and Getters(i.e. computed properties we need to use 'storeToRefs'  but not for actions)
-const { count } = storeToRefs(counterStore);
-const { resetCount } = counterStore;
+const { count, dummy } = storeToRefs(counterStore);
+const { resetCount, setDummy } = counterStore;
 </script>
 
 <style scoped>
