@@ -20,12 +20,12 @@ export const useCounterStore = defineStore('counter', () => {
   //To get localstorage value to set 'count' state on initialization.
   const persistingCount = localStorage.getItem("count");
   if (persistingCount) {
-    count.value = JSON.parse(persistingCount)._value;
+    count.value = JSON.parse(persistingCount);
   }
 
   //To persiste 'count' state in localstorage.
-  watch(count, userVal => {
-    localStorage.setItem('count', JSON.stringify(count));
+  watch(count, val => {
+    localStorage.setItem('count', JSON.stringify(val));
   }, { deep: true }
     //Here setting {deep: true} doesn't have any advantage but if your state is 
     //deeply nested then you should set it to true.
@@ -41,11 +41,11 @@ export const useCounterStore = defineStore('counter', () => {
 
   const persistingDummy = localStorage.getItem("dummy");
   if (persistingDummy) {
-    dummy.value = JSON.parse(persistingDummy)._value;
+    dummy.value = JSON.parse(persistingDummy);
   }
 
-  watch(dummy, userVal => {
-    localStorage.setItem('dummy', JSON.stringify(dummy));
+  watch(dummy, val => {
+    localStorage.setItem('dummy', JSON.stringify(val));
   }, { deep: true }
   )
 
