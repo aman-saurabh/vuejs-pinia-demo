@@ -15,20 +15,14 @@
 </template>
 
 <script setup>
-import { computed } from '@vue/reactivity';
-import { ref } from 'vue'
-const count = ref(0);
+import { storeToRefs } from 'pinia';
+import { useCounterStore } from '../stores/counter';
 
-const updateCount = (type) => {
-  if (type == 'inc') {
-    count.value++;
-  } else if (type == 'dec') {
-    if (count.value > 0)
-      count.value--;
-  }
-}
+const counterStore = useCounterStore();
+//For state and Getters(i.e. computed properties we need to use 'storeToRefs'  but not for actions)
+const { count, oddOrEven } = storeToRefs(counterStore);
+const { updateCount } = counterStore;
 
-const oddOrEven = computed(() => count.value % 2 == 0 ? 'Even' : 'Odd')
 </script>
 
 <style scoped>
